@@ -1,10 +1,10 @@
-import telebot
+﻿import telebot
 import logging
 from command_handler import CommandHandler
 
 from telebot import TeleBot, types
 
-API_TOKEN = ''
+API_TOKEN = '480759169:AAFbS77iCMmIeR87O0i9DH0QxVwZ5WqTFDs'
 
 bot = telebot.TeleBot(API_TOKEN)
 
