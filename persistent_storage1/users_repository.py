@@ -1,7 +1,6 @@
 from typing import Union, Iterable
 
-from telebot import TeleBot, logger
-from access import AccessLevel
+from telebot import logger
 from persistent_storage1.file_storage import JsonFileStorage
 from states import State
 

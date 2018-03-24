@@ -3,9 +3,6 @@ from telebot import TeleBot, types
 from telebot.types import Message
 from persistent_storage1.users_repository import UsersRepository
 import keyboard_helper
-from access import AccessLevel
-
-import telnetlib
 
 class CommandHandler:
 

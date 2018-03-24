@@ -1,7 +1,7 @@
 import json
 
 import os
-from typing import Iterable, Tuple
+from typing import Iterable
 
 
 class RawFileStorage:
