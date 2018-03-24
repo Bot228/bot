@@ -14,16 +14,13 @@ handler = CommandHandler(bot, users)
 
 @bot.message_handler(commands=['help', 'start'])
 def send_welcome(message):
-    user_id = message.from_user.id
-    if not users.exists(user_id):
-        user_info = UserInfo(user_id, state=State.MAIN)
-        users.save(user_info)
-        #file = open(str(user_id) + '.txt', "w")
-        #file.write("Корзина:\n")
-        #file.close()
+   # user_id = message.from_user.id
+    #if not users.exists(user_id):
+     #   user_info = UserInfo(user_id, state=State.MAIN)
+      #  users.save(user_info)
         handler.keyboard_in_tournaments(message)
-    else:
-        handler.keyboard_in_tournaments(message)
+    #else:
+     #   handler.keyboard_in_tournaments(message)
 
 
 @bot.message_handler(commands=['call'])
