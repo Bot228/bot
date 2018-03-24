@@ -1,4 +1,2 @@
-pypandoc=1.4
-states==0.1.6
 pyTelegramBotAPI==3.6.2
 typing==3.6.4
