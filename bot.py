@@ -2,26 +2,37 @@
 from command_handler import CommandHandler
 from persistent_storage1.users_repository import UsersRepository
 from states import State
+from persistent_storage1.users_repository import UserInfo
 
-API_TOKEN = '480759169:AAFbS77iCMmIeR87O0i9DH0QxVwZ5WqTFDs'
+API_TOKEN = '411523498:AAGn-FBzFqXebb7IyJ-7KpkfHrJVVC0tJ6U'
 
 bot = telebot.TeleBot(API_TOKEN)
-
-handler = CommandHandler(bot)
 users = UsersRepository("persistent_storage1\\storage\\users")
+
+handler = CommandHandler(bot, users)
 
 
 @bot.message_handler(commands=['help', 'start'])
 def send_welcome(message):
     user_id = message.from_user.id
     if not users.exists(user_id):
-        users.save(user_id, state=State.MAIN)
+        user_info = UserInfo(user_id, state=State.MAIN)
+        users.save(user_info)
         #file = open(str(user_id) + '.txt', "w")
         #file.write("Корзина:\n")
         #file.close()
         handler.keyboard_in_tournaments(message)
     else:
         handler.keyboard_in_tournaments(message)
+
+
+@bot.message_handler(commands=['call'])
+def call(message):
+    if ((str(message.from_user.id) == '442152076') or ((str(message.from_user.id) == '284137184'))):
+        handler.make_advert(message)
+    else:
+        bot.send_message(message.chat.id, "У вас нет прав!")
+
 
 @bot.message_handler(content_types=['photo'])
 def handle_docs_photo(message):
@@ -55,3 +66,4 @@ def sends(message):
         handler.keyboard_in_tournaments(message)
 
 bot.polling(none_stop=True)
+

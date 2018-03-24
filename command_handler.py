@@ -1,18 +1,22 @@
-
+import command_parser as parser
 from telebot import TeleBot, types
 from telebot.types import Message
-
+from persistent_storage1.users_repository import UsersRepository
 import keyboard_helper
+from access import AccessLevel
 
+import telnetlib
 
 class CommandHandler:
 
-    def __init__(self, bot: TeleBot):
+    def __init__(self, bot: TeleBot, users: UsersRepository):
         self.bot = bot
         self.file_info1 = ''
         self.file_info2 = ''
         self.file_info3 = ''
         self.file_info4 = ''
+        self.users = users
+
 
     def start1(self, message: Message):
         if self.file_info1 != '':
@@ -45,3 +49,14 @@ class CommandHandler:
 
     def _send_keyboard(self, chat_id: str, text:str, keyboard: types.ReplyKeyboardMarkup):
         self.bot.send_message(chat_id, text, reply_markup=keyboard, parse_mode="Markdown")
+
+    def make_advert(self, message: Message):
+        advert_text = parser.get_text_args(message.text)
+        if not advert_text:
+            self.bot.send_message(message.chat.id, 'Пустое сообщение')
+        else:
+            for info in self.users.read_all():
+                try:
+                    self.bot.send_message(info.user_id, advert_text)
+                except:
+                    print("Failed to send message to you")
