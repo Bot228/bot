@@ -14,12 +14,12 @@ handler = CommandHandler(bot, users)
 
 @bot.message_handler(commands=['help', 'start'])
 def send_welcome(message):
-    user_id = message.from_user.id
-    if not users.exists(user_id):
-        user_info = UserInfo(user_id, state=State.MAIN)
-        users.save(user_info)
-        handler.keyboard_in_tournaments(message)
-    else:
+    #user_id = message.from_user.id
+    #if not users.exists(user_id):
+     #   user_info = UserInfo(user_id, state=State.MAIN)
+      #  users.save(user_info)
+    #    handler.keyboard_in_tournaments(message)
+    #else:
         handler.keyboard_in_tournaments(message)
 
 
@@ -42,7 +42,7 @@ def handle_docs_photo(message):
             elif message.caption == '3':
                     handler.kek3(file_info)
         else:
-            bot.send_message(message.chat.id, 'У Вас нет прав')
+            bot.send_message(message.chat.id, 'У Вас нет прав!')
 
 @bot.message_handler(content_types=['text'])
 def sends(message):
