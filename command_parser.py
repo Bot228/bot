@@ -1,6 +1,5 @@
 from typing import Union, Tuple
 
-from states import State
 
 
 def get_username(text: str) -> Union[str, None]:
