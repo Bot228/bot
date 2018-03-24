@@ -1,21 +1,27 @@
 ﻿import telebot
 from command_handler import CommandHandler
-
+from persistent_storage1.users_repository import UsersRepository
+from states import State
 
 API_TOKEN = '480759169:AAFbS77iCMmIeR87O0i9DH0QxVwZ5WqTFDs'
 
 bot = telebot.TeleBot(API_TOKEN)
 
 handler = CommandHandler(bot)
+users = UsersRepository("persistent_storage1\\storage\\users")
 
 
 @bot.message_handler(commands=['help', 'start'])
 def send_welcome(message):
-    '''bot.reply_to(message, """\
-Привет! 
-Я тестовый бот, и умею я пока немного. Напиши мне и я отвечу!\
-""")'''
-    handler.keyboard_in_tournaments(message)
+    user_id = message.from_user.id
+    if not users.exists(user_id):
+        users.save(user_id, state=State.MAIN)
+        #file = open(str(user_id) + '.txt', "w")
+        #file.write("Корзина:\n")
+        #file.close()
+        handler.keyboard_in_tournaments(message)
+    else:
+        handler.keyboard_in_tournaments(message)
 
 @bot.message_handler(content_types=['photo'])
 def handle_docs_photo(message):
