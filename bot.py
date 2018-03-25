@@ -3,7 +3,8 @@ from command_handler import CommandHandler
 from persistent_storage1.users_repository import UsersRepository
 from states import State
 from persistent_storage1.users_repository import UserInfo
-from Token import API_TOKEN
+
+API_TOKEN = '480759169:AAFbS77iCMmIeR87O0i9DH0QxVwZ5WqTFDs'
 
 bot = telebot.TeleBot(API_TOKEN)
 users = UsersRepository("persistent_storage1\\storage\\users")
