@@ -1,7 +1,7 @@
 import command_parser as parser
 from telebot import TeleBot, types
 from telebot.types import Message
-from persistent_storage1.users_repository import UsersRepository
+from users_repository import UsersRepository
 import keyboard_helper
 
 class CommandHandler:

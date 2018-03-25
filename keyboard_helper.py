@@ -11,5 +11,5 @@ def create_keyboard(row_width: int, buttons: List[ButtonType]) -> types.ReplyKey
     return keyboard
 
 def create_tournaments_keyboard() -> types.ReplyKeyboardMarkup:
-    buttons = [ButtonType.Soccer, ButtonType.Salad, ButtonType.Poker,ButtonType.Bag, ButtonType.Pizza, ButtonType.Hat, ]
+    buttons = [ButtonType.Soccer, ButtonType.Salad, ButtonType.Poker,ButtonType.Bag, ButtonType.Hat, ButtonType.Pizza]
     return create_keyboard(row_width=2, buttons=buttons)

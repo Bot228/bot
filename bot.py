@@ -1,25 +1,25 @@
 ﻿import telebot
 from command_handler import CommandHandler
-from persistent_storage1.users_repository import UsersRepository
+from users_repository import UsersRepository
 from states import State
-from persistent_storage1.users_repository import UserInfo
+from users_repository import UserInfo
 
 API_TOKEN = '480759169:AAFbS77iCMmIeR87O0i9DH0QxVwZ5WqTFDs'
 
 bot = telebot.TeleBot(API_TOKEN)
-users = UsersRepository("persistent_storage1\\storage\\users")
+users = UsersRepository("users")
 
 handler = CommandHandler(bot, users)
 
 
 @bot.message_handler(commands=['help', 'start'])
 def send_welcome(message):
-    #user_id = message.from_user.id
-    #if not users.exists(user_id):
-     #   user_info = UserInfo(user_id, state=State.MAIN)
-      #  users.save(user_info)
-    #    handler.keyboard_in_tournaments(message)
-    #else:
+    user_id = message.from_user.id
+    if not users.exists(user_id):
+        user_info = UserInfo(user_id, state=State.MAIN)
+        users.save(user_info)
+        handler.keyboard_in_tournaments(message)
+    else:
         handler.keyboard_in_tournaments(message)
 
 
