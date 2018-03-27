@@ -4,7 +4,7 @@ from users_repository import UsersRepository
 from states import State
 from users_repository import UserInfo
 
-API_TOKEN = '562781455:AAGlciJk7H7KdgXUMkqU5V7zyGAoa4Epyz4'
+API_TOKEN = '480759169:AAFbS77iCMmIeR87O0i9DH0QxVwZ5WqTFDs'
 
 bot = telebot.TeleBot(API_TOKEN)
 users = UsersRepository("users")
