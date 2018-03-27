@@ -62,5 +62,14 @@ def sends(message):
         handler.start4(message)
         handler.keyboard_in_tournaments(message)
 
+    if (message.text == '☎ Контакты'):
+        bot.send_message(message.chat.id, 'Адрес: '
+                                          'Город Павлодар, ул. Ленина д.12'
+                                          'Телефон:'
+                                          '53-47-14'
+                                          'Email:'
+                                          'lizey8@mail.ru ')
+        handler.keyboard_in_tournaments(message)
+
 bot.polling(none_stop=True)
 
