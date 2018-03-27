@@ -50,15 +50,15 @@ def sends(message):
         handler.start1(message)
         handler.keyboard_in_tournaments(message)
 
-    if (message.text == u'\U0001F374 Расписание звонков'):
+    if (message.text == '⏰ Расписание звонков'):
         handler.start2(message)
         handler.keyboard_in_tournaments(message)
 
-    if (message.text == u'\U0001F0CF Меню в столовой'):
+    if (message.text == '🍛 Меню в столовой'):
         handler.start3(message)
         handler.keyboard_in_tournaments(message)
 
-    if (message.text == u'\U0001F697 График дежурств'):
+    if (message.text == '📝 График дежурств'):
         handler.start4(message)
         handler.keyboard_in_tournaments(message)
 
