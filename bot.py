@@ -33,16 +33,31 @@ def call(message):
 
 @bot.message_handler(content_types=['photo'])
 def handle_docs_photo(message):
-        if ((str(message.from_user.id) == '442152076') or ((str(message.from_user.id) == '284137184'))):
-            file_info = message.photo[len(message.photo) - 1].file_id
-            if message.caption == '1':
-                handler.kek1(file_info)
-            elif message.caption == '2':
-                    handler.kek2(file_info)
-            elif message.caption == '3':
-                    handler.kek3(file_info)
-        else:
-            bot.send_message(message.chat.id, 'У Вас нет прав!')
+
+    if ((str(message.from_user.id) == '442152076') or ((str(message.from_user.id) == '284137184'))):
+        if message.caption == '1':
+            file_info = bot.get_file(message.photo[0].file_id)
+            downloaded_file = bot.download_file(file_info.file_path)
+            src = message.photo[0].file_id
+            with open("1.jpg", 'wb') as new_file:
+                new_file.write(downloaded_file)
+            handler.kek1(src)
+        elif message.caption == '2':
+            file_info = bot.get_file(message.photo[0].file_id)
+            downloaded_file = bot.download_file(file_info.file_path)
+            src = message.photo[0].file_id
+            with open("2.jpg", 'wb') as new_file:
+                new_file.write(downloaded_file)
+            handler.kek2(src)
+        elif message.caption == '3':
+            file_info = bot.get_file(message.photo[0].file_id)
+            downloaded_file = bot.download_file(file_info.file_path)
+            src = message.photo[0].file_id
+            with open("3.jpg", 'wb') as new_file:
+                new_file.write(downloaded_file)
+            handler.kek3(src)
+    else:
+        bot.send_message(message.chat.id, 'У Вас нет прав!')
 
 @bot.message_handler(content_types=['text'])
 def sends(message):
