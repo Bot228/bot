@@ -16,19 +16,19 @@ class CommandHandler:
 
 
     def start1(self, message: Message):
-        if self.file_info1 != '':
-            self.bot.send_photo(message.chat.id, self.file_info1)
+        photo = '1.jpg'
+        self.bot.send_photo(message.chat.id, open(photo, 'rb'))
 
     def start2(self, message: Message):
         self.bot.send_photo(message.chat.id, 'https://content.foto.my.mail.ru/mail/faspo28/_myphoto/h-1.jpg')
 
     def start3(self, message: Message):
-        if self.file_info2 != '':
-            self.bot.send_photo(message.chat.id, self.file_info2)
+        photo = '2.jpg'
+        self.bot.send_photo(message.chat.id, open(photo, 'rb'))
 
     def start4(self, message: Message):
-        if self.file_info3 != '':
-            self.bot.send_photo(message.chat.id, self.file_info3)
+        photo = '3.jpg'
+        self.bot.send_photo(message.chat.id,open(photo, 'rb'))
 
     def kek1(self, message: Message):
         self.file_info1 = message
