@@ -42,7 +42,6 @@ def handle_docs_photo(message):
             with open(src, 'wb') as new_file:
                 new_file.write(downloaded_file)
             bot.reply_to(message, "Фото добавлено")
-            bot.send_photo(message.chat.id, src)
             handler.kek1(src)
         elif message.caption == '2':
             file_info = bot.get_file(message.photo[len(message.photo) - 1].file_id)
@@ -50,12 +49,13 @@ def handle_docs_photo(message):
             src = "2.jpg"
             with open("2.jpg", 'wb') as new_file:
                 new_file.write(downloaded_file)
+            bot.reply_to(message, "Фото добавлено")
             handler.kek2(src)
         elif message.caption == '3':
             file_info = bot.get_file(message.photo[len(message.photo) - 1].file_id)
             downloaded_file = bot.download_file(file_info.file_path)
             src = "3.jpg"
-
+            bot.reply_to(message, "Фото добавлено")
             with open("3.jpg", 'wb') as new_file:
                 new_file.write(downloaded_file)
             handler.kek3(src)
