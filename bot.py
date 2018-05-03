@@ -3,6 +3,9 @@ from command_handler import CommandHandler
 from users_repository import UsersRepository
 from states import State
 from users_repository import UserInfo
+from telebot import logger
+import time
+import os
 
 API_TOKEN = '562781455:AAGlciJk7H7KdgXUMkqU5V7zyGAoa4Epyz4'
 
@@ -36,6 +39,8 @@ def handle_docs_photo(message):
 
     if ((str(message.from_user.id) == '442152076') or ((str(message.from_user.id) == '284137184'))):
         if message.caption == '1':
+            path = os.path.join(os.path.abspath(os.path.dirname(__file__)), '1.jpg')
+            os.remove(path)
             file_info = bot.get_file(message.photo[len(message.photo) - 1].file_id)
             downloaded_file = bot.download_file(file_info.file_path)
             src = '1.jpg'
@@ -44,6 +49,8 @@ def handle_docs_photo(message):
             bot.reply_to(message, "Фото добавлено")
             handler.kek1(src)
         elif message.caption == '2':
+            path = os.path.join(os.path.abspath(os.path.dirname(__file__)), '2.jpg')
+            os.remove(path)
             file_info = bot.get_file(message.photo[len(message.photo) - 1].file_id)
             downloaded_file = bot.download_file(file_info.file_path)
             src = "2.jpg"
@@ -52,6 +59,8 @@ def handle_docs_photo(message):
             bot.reply_to(message, "Фото добавлено")
             handler.kek2(src)
         elif message.caption == '3':
+            path = os.path.join(os.path.abspath(os.path.dirname(__file__)), '3.jpg')
+            os.remove(path)
             file_info = bot.get_file(message.photo[len(message.photo) - 1].file_id)
             downloaded_file = bot.download_file(file_info.file_path)
             src = "3.jpg"
@@ -89,5 +98,10 @@ def sends(message):
                                           'lizey8@mail.ru\n')
         handler.keyboard_in_tournaments(message)
 
-bot.polling(none_stop=True)
+while True:
+    try:
+        bot.polling(none_stop=True)
+    except Exception as e:
+        logger.error(e)
+        time.sleep(15)
 

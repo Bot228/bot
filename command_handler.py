@@ -16,28 +16,34 @@ class CommandHandler:
 
 
     def start1(self, message: Message):
-        photo = '1.jpg'
-        self.bot.send_photo(message.chat.id, open(photo, 'rb'))
+        try:
+            self.bot.send_photo(message.chat.id, open('1.jpg', 'rb'))
+        except FileNotFoundError:
+            self.bot.send_message(message.chat.id, 'Фото отсутсвует')
 
     def start2(self, message: Message):
         self.bot.send_photo(message.chat.id, 'https://content.foto.my.mail.ru/mail/faspo28/_myphoto/h-1.jpg')
 
     def start3(self, message: Message):
-        photo = '2.jpg'
-        self.bot.send_photo(message.chat.id, open(photo, 'rb'))
+        try:
+            self.bot.send_photo(message.chat.id, open('2.jpg', 'rb'))
+        except FileNotFoundError:
+            self.bot.send_message(message.chat.id, 'Фото отсутсвует')
 
     def start4(self, message: Message):
-        photo = '3.jpg'
-        self.bot.send_photo(message.chat.id,open(photo, 'rb'))
+        try:
+            self.bot.send_photo(message.chat.id, open('3.jpg', 'rb'))
+        except FileNotFoundError:
+            self.bot.send_message(message.chat.id, 'Фото отсутсвует')
 
-    def kek1(self, message: Message):
-        self.file_info1 = message
+    def kek1(self, src):
+        self.file_info1 = src
 
-    def kek2(self, message: Message):
-        self.file_info2 = message
+    def kek2(self, src):
+        self.file_info2 = src
 
-    def kek3(self, message: Message):
-        self.file_info3 = message
+    def kek3(self, src):
+        self.file_info3 = src
 
     def keyboard_in_tournaments(self, message: Message):
         keyboard = keyboard_helper.create_tournaments_keyboard()
