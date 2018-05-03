@@ -99,9 +99,14 @@ def sends(message):
         handler.keyboard_in_tournaments(message)
 
 while True:
+
     try:
+
         bot.polling(none_stop=True)
+
     except Exception as e:
+
         logger.error(e)
+
         time.sleep(15)
 
