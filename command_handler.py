@@ -17,7 +17,7 @@ class CommandHandler:
 
     def start1(self, message: Message):
         try:
-            self.bot.send_document(message.chat.id, open('1.jpg', 'rb'))
+            self.bot.send_photo(message.chat.id, open('1.jpg', 'rb'))
         except FileNotFoundError:
             self.bot.send_message(message.chat.id, 'Фото отсутсвует')
 
@@ -26,13 +26,13 @@ class CommandHandler:
 
     def start3(self, message: Message):
         try:
-            self.bot.send_document(message.chat.id, open('2.jpg', 'rb'))
+            self.bot.send_photo(message.chat.id, open('2.jpg', 'rb'))
         except FileNotFoundError:
             self.bot.send_message(message.chat.id, 'Фото отсутсвует')
 
     def start4(self, message: Message):
         try:
-            self.bot.send_document(message.chat.id, open('3.jpg', 'rb'))
+            self.bot.send_photo(message.chat.id, open('3.jpg', 'rb'))
         except FileNotFoundError:
             self.bot.send_message(message.chat.id, 'Фото отсутсвует')
 
