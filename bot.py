@@ -3,6 +3,7 @@ from command_handler import CommandHandler
 from users_repository import UsersRepository
 from states import State
 from users_repository import UserInfo
+
 from telebot import logger
 import time
 import os
@@ -104,9 +105,9 @@ while True:
 
         bot.polling(none_stop=True)
 
-    except Exception as e:
-
+    except ConnectionError as e:
         logger.error(e)
-
         time.sleep(15)
+
+
 
