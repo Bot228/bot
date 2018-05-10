@@ -106,7 +106,7 @@ while True:
         bot.polling(none_stop=True)
 
     except ReadTimeout:
-        time.sleep(30)
+        time.sleep(15)
 
     except ConnectionError:
         time.sleep(15)
