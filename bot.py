@@ -4,7 +4,6 @@ from users_repository import UsersRepository
 from states import State
 from users_repository import UserInfo
 from requests.exceptions import ReadTimeout
-
 import time
 import os
 
@@ -106,9 +105,11 @@ while True:
         bot.polling(none_stop=True)
 
     except ReadTimeout:
-        time.sleep(30)
+        time.sleep(15)
 
     except ConnectionError:
         time.sleep(15)
 
+    except ReadTimeoutError:
+        time.sleep(15)
 
